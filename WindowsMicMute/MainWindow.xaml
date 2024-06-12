@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:windowsMicMute="clr-namespace:WindowsMicMute"
     Name="Win"
     Title="MainWindow"
     Width="{Binding AppWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
@@ -13,9 +14,9 @@
     MinHeight="60"
     MaxWidth="100"
     MaxHeight="100"
-    Margin="0"
+    Margin="0" LocationChanged="MainWindow_OnLocationChanged"
     Padding="0"
-    d:DataContext="{d:DesignInstance local:MainWindow,
+    d:DataContext="{d:DesignInstance windowsMicMute:MainWindow,
                                      IsDesignTimeCreatable=True}"
     hc:WindowAttach.IgnoreAltF4="True"
     Loaded="MainWindow_OnLoaded"
@@ -27,9 +28,10 @@
     ShowMinButton="False"
     ShowNonClientArea="False"
     ShowTitle="False"
-    Topmost="True" WindowStyle="ToolWindow"
-    WindowStartupLocation="CenterScreen"
+    Topmost="True"
+    WindowStartupLocation="Manual"
     WindowState="Normal"
+    WindowStyle="ToolWindow"
     mc:Ignorable="d">
     <Grid>
 

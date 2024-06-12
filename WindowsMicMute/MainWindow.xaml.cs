@@ -62,6 +62,19 @@ namespace WindowsMicMute
         {
             InitializeComponent();
             DataContext = this;
+
+            var loc = SettingsHelper.Instance.LoadWindowLocation();
+            if (loc is { Width: > 0, Height: > 0 })
+            {
+                Left = loc.Left;
+                Top = loc.Top;
+                AppWidth = loc.Width;
+                AppHeight = loc.Height;
+            }
+            else
+            {
+                WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            }
         }
 
 
@@ -73,9 +86,6 @@ namespace WindowsMicMute
                 //Performing some magic to hide the form from Alt+Tab
                 _ = SetWindowLong(helper, GwlExStyle,
                     (GetWindowLong(helper, GwlExStyle) | WsExToolWindow) & ~WsExAppWindow);
-
-                Width = AppWidth;
-                Height = AppHeight;
 
                 var enumerator = new MMDeviceEnumerator();
                 _device = enumerator.GetDefaultAudioEndpoint(DataFlow.Capture, Role.Communications);
@@ -139,6 +149,10 @@ namespace WindowsMicMute
             DragMove();
         }
 
+        private void MainWindow_OnLocationChanged(object? sender, EventArgs e)
+        {
+            SettingsHelper.Instance.SaveWindowLocation(this);
+        }
 
         private static void InstallOnStartUp()
         {
