@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel;
+using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
+using Microsoft.Win32;
 using NAudio.CoreAudioApi;
 using NAudio.Wave;
 
@@ -138,25 +140,30 @@ namespace WindowsMicMute
         }
 
 
-        private void InstallOnStartUp()
+        private static void InstallOnStartUp()
         {
             try
             {
-                var key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(
-                    @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
-                var curAssembly = Assembly.GetExecutingAssembly();
+                // Open the registry key where startup applications are listed
+                using var key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
                 if (key != null)
                 {
-                    var existed = key.GetValue(curAssembly.GetName().Name, curAssembly.Location);
+                    var curAssembly = Assembly.GetExecutingAssembly();
+                    var exePath = curAssembly.Location.Replace(".dll", ".exe");
+                    var exeName = Path.GetFileName(exePath);
+                    var existed = key.GetValue(exeName);
+
+                    // If the key does not exist, set it to start the current executable on startup
                     if (existed == null)
                     {
-                        key.SetValue(curAssembly.GetName().Name, curAssembly.Location);
+                        key.SetValue(exeName, exePath);
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //ignore
+                // Log or handle the exception as needed
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
         }
 
