@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowsMicMute", "WindowsMiceMute\WindowsMicMute.csproj", "{97C898E4-880F-4836-B777-5AE82A8AB2DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowsMicMute", "WindowsMicMute\WindowsMicMute.csproj", "{3D50B7EA-0077-4F6E-ABF5-A9F5BC0849AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{97C898E4-880F-4836-B777-5AE82A8AB2DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{97C898E4-880F-4836-B777-5AE82A8AB2DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{97C898E4-880F-4836-B777-5AE82A8AB2DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{97C898E4-880F-4836-B777-5AE82A8AB2DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D50B7EA-0077-4F6E-ABF5-A9F5BC0849AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D50B7EA-0077-4F6E-ABF5-A9F5BC0849AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D50B7EA-0077-4F6E-ABF5-A9F5BC0849AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D50B7EA-0077-4F6E-ABF5-A9F5BC0849AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
