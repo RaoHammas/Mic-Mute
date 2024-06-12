@@ -1,0 +1,83 @@
+﻿<hc:Window
+    x:Class="WindowsMicMute.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Name="Win"
+    Title="MainWindow"
+    Width="{Binding AppWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
+    Height="{Binding AppHeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
+    MinWidth="55"
+    MinHeight="60"
+    MaxWidth="100"
+    MaxHeight="100"
+    Margin="0"
+    Padding="0"
+    d:DataContext="{d:DesignInstance local:MainWindow,
+                                     IsDesignTimeCreatable=True}"
+    hc:WindowAttach.IgnoreAltF4="True"
+    Loaded="MainWindow_OnLoaded"
+    NonClientAreaHeight="0"
+    ResizeMode="NoResize"
+    ShowCloseButton="False"
+    ShowInTaskbar="False"
+    ShowMaxButton="False"
+    ShowMinButton="False"
+    ShowNonClientArea="False"
+    ShowTitle="False"
+    Topmost="True" WindowStyle="ToolWindow"
+    WindowStartupLocation="CenterScreen"
+    WindowState="Normal"
+    mc:Ignorable="d">
+    <Grid>
+
+        <ProgressBar
+            x:Name="ProgressBar"
+            Width="{Binding AppWidth}"
+            Height="{Binding AppHeight}"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Bottom"
+            hc:VisualElement.Text=""
+            Background="Transparent"
+            Cursor="ScrollAll"
+            Maximum="100"
+            Minimum="0"
+            Orientation="Vertical"
+            PreviewMouseLeftButtonDown="OnMouseLefButtonDown"
+            Value="{Binding AudioLevel, UpdateSourceTrigger=PropertyChanged, Mode=OneWay, NotifyOnSourceUpdated=True}" />
+
+        <Image
+            Width="40"
+            Height="40"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch">
+            <Image.Style>
+                <Style TargetType="Image">
+                    <Setter Property="Source" Value="Resources/mic.png" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsMute, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}" Value="True">
+                            <Setter Property="Source" Value="Resources/mic_muted.png" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsMute, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}" Value="False">
+                            <Setter Property="Source" Value="Resources/mic.png" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
+
+        <Border
+            Width="40"
+            Height="40"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="Transparent"
+            CornerRadius="100"
+            Cursor="Hand"
+            MouseLeftButtonUp="ToggleMute_Click" />
+    </Grid>
+
+
+</hc:Window>

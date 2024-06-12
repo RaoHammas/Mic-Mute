@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+		<NeutralLanguage>en</NeutralLanguage>
+		<AssemblyName>Windows Mic Mute</AssemblyName>
+		<ApplicationIcon>Resources\mic.ico</ApplicationIcon>
+		<Title>Mic Mute | An app to mute/unmute active mic</Title>
+		<Authors>Rao Hammas Hussain</Authors>
+		<Description>An app to mute unmute active mic</Description>
+		<Copyright>Rao Hammas Hussain</Copyright>
+		<PackageProjectUrl>https://github.com/RaoHammas/Windows-Process-Monitor</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/RaoHammas/Windows-Process-Monitor</RepositoryUrl>
+		<PackageTags>Windows, Mic, Mute, Global, Application</PackageTags>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="Resources\mic.png" />
+		<None Remove="Resources\mic_muted.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Resources\mic.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="HandyControls" Version="3.5.3" />
+		<PackageReference Include="NAudio" Version="2.2.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="Resources\mic_muted.png" />
+		<Resource Include="Resources\mic.png" />
+	</ItemGroup>
+
+</Project>
